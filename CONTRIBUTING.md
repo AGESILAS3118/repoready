@@ -31,3 +31,26 @@ RepoReady uses the Node.js native test runner (`node:test`):
 npm test
 ```
 All unit tests verify input escaping, YAML parsing validity, ZIP archive generation, and unreplaced template variables.
+
+## Code of Conduct
+
+This project is governed by the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report any unacceptable behavior responsibly.
+
+## Reporting a Bug / Signaler un bogue
+
+- Before opening a new issue, please search existing issues to see if the bug was already reported.
+- To report a bug, use our official GitHub Issue Form: go to the **Issues** tab and click **New Issue** > **Bug Report** (or use `.github/ISSUE_TEMPLATE/bug_report.yml`).
+- Include precise steps to reproduce, expected behavior, and browser/Node environment details.
+
+## Submitting a Pull Request / Proposer une Pull Request
+
+1. **Fork & Branch**: Fork the repository and create a feature branch off `main` (e.g. `git checkout -b feature/my-enhancement`).
+2. **Follow Standards**:
+   - Zero runtime dependencies: keep core logic in pure vanilla JavaScript.
+   - Maintain strict CSP compatibility: no inline styles or external resources.
+3. **Run Tests**: Ensure all automated tests pass before opening a PR:
+   ```bash
+   npm test
+   ```
+4. **Commit & PR**: Write clear, descriptive commit messages (following conventional commit prefixes such as `fix:`, `feat:`, `docs:`) and reference any related issue.
+
