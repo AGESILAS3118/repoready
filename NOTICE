@@ -1,0 +1,33 @@
+RepoReady v0.1 - NOTICE File
+==============================
+
+This software includes and generates open-source software licenses and community health templates.
+All legal texts included in `templates/licenses/` and `templates/` have been verified against their official fetched source URLs.
+
+1. Contributor Covenant Code of Conduct (v2.1)
+   - English Raw Source URL: https://raw.githubusercontent.com/ContributorCovenant/contributor_covenant/release/content/version/2/1/code_of_conduct.md
+   - French Source URL: https://www.contributor-covenant.org/fr/version/2/1/code_of_conduct/code_of_conduct.md
+   - License Status: The Contributor Covenant text is reported to be published under the Creative Commons Attribution 4.0 International license (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/). This is not stated verbatim in the official files we fetched; see NEEDS_REVIEW.md.
+   - Attribution: Adapted from the Contributor Covenant, version 2.1. Community Impact Guidelines inspired by Mozilla's Code of Conduct Enforcement Ladder.
+
+2. Official Software Licenses (`templates/licenses/`)
+   - MIT License:
+     Exact Source URL: https://raw.githubusercontent.com/spdx/license-list-data/main/text/MIT.txt
+     License: MIT License
+   - Apache License 2.0:
+     Exact Source URL: https://www.apache.org/licenses/LICENSE-2.0.txt
+     License: Apache License, Version 2.0
+   - BSD 3-Clause License:
+     Exact Source URL: https://raw.githubusercontent.com/spdx/license-list-data/main/text/BSD-3-Clause.txt
+     License: BSD 3-Clause "New" or "Revised" License
+   - ISC License:
+     Exact Source URL: https://raw.githubusercontent.com/spdx/license-list-data/main/text/ISC.txt
+     License: ISC License
+   - Unlicense:
+     Exact Source URL: https://unlicense.org/UNLICENSE
+     License: Public Domain / The Unlicense
+
+3. Third-Party Dev Dependencies (Testing Only)
+   - `yaml` (npm package):
+     Exact Source URL: https://github.com/eemeli/yaml
+     License: ISC License (https://opensource.org/licenses/ISC)

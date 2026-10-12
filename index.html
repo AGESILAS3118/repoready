@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="system">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:;">
+  <title>RepoReady — GitHub Community Files Generator</title>
+  <meta name="description" content="Generate official community files for your GitHub repository in 2 minutes, in English and French.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="container nav-content">
+      <a href="#" class="brand">
+        <div class="brand-icon">RR</div>
+        <h1 id="txt-appTitle">RepoReady</h1>
+      </a>
+      <div class="controls">
+        <select id="select-ui-lang" class="lang-select" aria-label="Select UI Language">
+          <option value="en">English (EN)</option>
+          <option value="fr">Français (FR)</option>
+        </select>
+        <button id="btn-theme-toggle" class="btn-icon" aria-label="Toggle Theme">🌓</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-layout">
+    <p class="tagline" id="txt-appTagline">Make your repo community-ready in 2 minutes, in English or French.</p>
+    
+    <div class="disclaimer-banner">
+      <span id="txt-disclaimerText">⚠️ Disclaimer: These files are generic templates provided for convenience. Please review them carefully before committing. This tool does not provide legal advice.</span>
+    </div>
+
+    <div class="app-grid">
+      <!-- Left Column: Form -->
+      <section class="panel" aria-labelledby="txt-formHeading">
+        <h2 id="txt-formHeading">Project Details</h2>
+        <form id="repoready-form" onsubmit="return false;">
+          
+          <div class="form-group">
+            <label for="input-project" id="txt-labelProject">Project Name</label>
+            <input type="text" id="input-project" name="project" class="form-control" placeholder="e.g. RepoReady" required>
+          </div>
+
+          <div class="form-group">
+            <label for="input-owner" id="txt-labelOwner">Owner (GitHub username or org)</label>
+            <input type="text" id="input-owner" name="owner" class="form-control" placeholder="e.g. octocat" required>
+            <span id="owner-error-msg" class="error-message hidden"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="input-description" id="txt-labelDescription">One-sentence Description</label>
+            <input type="text" id="input-description" name="description" class="form-control" placeholder="e.g. A fast client-side community files generator.">
+          </div>
+
+          <div class="form-group">
+            <label for="input-email" id="txt-labelEmail">Security Contact E-mail</label>
+            <input type="email" id="input-email" name="email" class="form-control" placeholder="e.g. security@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="select-type" id="txt-labelType">Project Type</label>
+            <select id="select-type" name="projectType" class="form-control">
+              <option value="library" id="txt-typeLibrary">Library / Package</option>
+              <option value="app" id="txt-typeApp">Application / Web App</option>
+              <option value="documentation" id="txt-typeDocs">Documentation / Course</option>
+              <option value="other" id="txt-typeOther">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label id="txt-labelEcosystems">Ecosystems Used (for Dependabot)</label>
+            <div class="checkbox-group">
+              <label class="checkbox-label"><input type="checkbox" name="ecosystem" value="npm" checked> npm</label>
+              <label class="checkbox-label"><input type="checkbox" name="ecosystem" value="pip"> pip</label>
+              <label class="checkbox-label"><input type="checkbox" name="ecosystem" value="cargo"> cargo</label>
+              <label class="checkbox-label"><input type="checkbox" name="ecosystem" value="go"> go</label>
+              <label class="checkbox-label"><input type="checkbox" name="ecosystem" value="docker"> docker</label>
+              <label class="checkbox-label"><input type="checkbox" name="ecosystem" value="github-actions"> actions</label>
+            </div>
+            <span id="ecosystem-note" class="info-message hidden"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="input-maintainers" id="txt-labelMaintainers">Maintainers (comma-separated handles)</label>
+            <input type="text" id="input-maintainers" name="maintainers" class="form-control" placeholder="e.g. @octocat, @devlead">
+          </div>
+
+          <div class="form-group">
+            <label for="select-license" id="txt-labelLicense">License</label>
+            <select id="select-license" name="license" class="form-control">
+              <option value="MIT">MIT</option>
+              <option value="Apache-2.0">Apache-2.0</option>
+              <option value="BSD-3-Clause">BSD-3-Clause</option>
+              <option value="ISC">ISC</option>
+              <option value="Unlicense">Unlicense</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="select-output-lang" id="txt-labelOutputLang">Generated Files Language</label>
+            <select id="select-output-lang" name="outputLanguage" class="form-control">
+              <option value="en" id="txt-langEn">English</option>
+              <option value="fr" id="txt-langFr">French</option>
+              <option value="both" id="txt-langBoth">Both (Bilingual EN/FR)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="input-sponsor" id="txt-labelSponsor">Sponsor Handle (optional, for FUNDING.yml)</label>
+            <input type="text" id="input-sponsor" name="sponsor" class="form-control" placeholder="e.g. octocat">
+          </div>
+
+          <div class="zip-download-area">
+            <div id="zip-warning-banner" class="zip-warning-banner hidden"></div>
+            <button id="btn-download-zip" type="button" class="btn-primary">
+              📦 <span id="txt-btnDownloadZip">Download ZIP Archive</span>
+            </button>
+          </div>
+
+        </form>
+      </section>
+
+      <!-- Right Column: Live Preview -->
+      <section class="panel" aria-labelledby="txt-previewHeading">
+        <h2 id="txt-previewHeading">Generated Community Files</h2>
+        
+        <div id="file-tabs" class="file-tabs" role="tablist">
+          <!-- Dynamic tabs injected here -->
+        </div>
+
+        <div class="file-header">
+          <div id="active-file-path" class="file-path">LICENSE</div>
+          <div class="file-actions">
+            <button id="btn-copy" type="button" class="btn-secondary">
+              📋 <span id="txt-btnCopy">Copy Content</span>
+            </button>
+            <a id="link-github-create" href="#" target="_blank" rel="noopener noreferrer" class="btn-secondary hidden">
+              🚀 <span id="txt-btnCreateOnGithub">Create on GitHub</span>
+            </a>
+          </div>
+        </div>
+
+        <div id="url-too-long-note" class="badge-warning hidden">
+          ⚠️ <span id="txt-noteUrlTooLong">URL length exceeds GitHub prefill limit (~6000 chars). Please use Copy or Download ZIP.</span>
+        </div>
+
+        <div id="help-text-box" class="help-text">
+          <strong id="txt-helpHeader">Where does this file go?</strong>
+          <p id="active-file-help">The legal license for your repository. Placed at the root directory.</p>
+        </div>
+
+        <pre id="code-preview" class="preview-code"></pre>
+
+        <p class="note-text">
+          ℹ️ <span id="txt-noteEmptyRepo">Note: You must have already created the empty repository on GitHub.</span>
+        </p>
+
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>RepoReady v0.1 — 100% Client-Side Open Source Tool under MIT License.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>

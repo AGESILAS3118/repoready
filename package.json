@@ -1,0 +1,20 @@
+{
+  "name": "repoready",
+  "version": "0.1.0",
+  "description": "Make your repo community-ready in 2 minutes, in English or French.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  },
+  "keywords": [
+    "github",
+    "community-health",
+    "generator",
+    "templates"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "yaml": "^2.7.0"
+  }
+}

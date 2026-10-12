@@ -1,0 +1,11 @@
+name: Feature Request
+description: Suggest an enhancement for RepoReady
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: Feature Description
+    validations:
+      required: true
